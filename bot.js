@@ -27,8 +27,10 @@ function getUsers() {
 }
 
 function prosses(users) {
-  const arrive = users.filter((user) => storage.previous.indexOf(user.name));
-  console.log(arrive);
+  const arrive = users.filter(
+    (user) => storage.previous.indexOf(user.name) === -1
+  );
+  console.log("Arrive:", arrive);
 }
 
 // ================================================================================================= //
