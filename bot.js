@@ -27,10 +27,19 @@ function getUsers() {
 }
 
 function prosses(users) {
-  const arrive = users.filter(
-    (user) => storage.previous.indexOf(user.name) === -1
+  const userName = users.map((user) => user.name);
+  const mutedUser = users
+    .filter((user) => user.muted && user.name)
+    .map((user) => user.name);
+  const arrive = userName.filter(
+    (user) => storage.previous.indexOf(user) === -1
+  );
+  const leave = storage.previous.filter(
+    (user) => userName.indexOf(user) === -1
   );
   console.log("Arrive:", arrive);
+  console.log("Leave:", leave);
+  console.log("Muted:", mutedUser);
 }
 
 // ================================================================================================= //
