@@ -1,2 +1,2 @@
-# Meet-hach-bot
+# Meet-Hack-Bot
 Created with CodeSandbox
