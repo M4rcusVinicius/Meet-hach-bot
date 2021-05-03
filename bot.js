@@ -5,7 +5,8 @@
 var storage = {
   previous: [],
   prevMuted: [],
-  muted: []
+  muted: [],
+  history: []
 };
 
 // ================================================================================================= //
@@ -63,11 +64,13 @@ function compose(arr) {
   const minutes = `0${date.getMinutes()}`.slice(-2);
   const time = hours + ":" + minutes;
   return arr.map((name) => {
-    return {
+    const user = {
       name: name,
       time: time,
       muted: storage.muted.indexOf(name) > -1
     };
+    storage.history.push(user);
+    return user;
   });
 }
 
