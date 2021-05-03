@@ -317,7 +317,8 @@ var storage = {
   prevMuted: [],
   muted: [],
   history: [],
-  timer: 0
+  timer: 0,
+  active: false,
 };
 
 var config = {
@@ -353,10 +354,12 @@ function escape(result) {
 // ================================================================================================= //
 
 function loop() {
-  storage.timer = setTimeout(() => {
-    bot();
-    loop();
-  }, 1000);
+  if (storage.active) {
+    storage.timer = setTimeout(() => {
+      bot();
+      loop();
+    }, 1000);
+  }
 }
 
 function bot() {
@@ -366,7 +369,7 @@ function bot() {
   const mutedUser = users
     .filter((user) => user.muted && user.name)
     .map((user) => user.name);
-  const result = prosses(userName, mutedUser);
+  const result = process(userName, mutedUser);
 
   storage.previous = userName;
   storage.prevMuted = mutedUser;
@@ -383,7 +386,7 @@ function getUsers() {
   });
 }
 
-function prosses(userName, mutedUser) {
+function process(userName, mutedUser) {
   const arrive = userName.filter(
     (user) => storage.previous.indexOf(user) === -1
   );
@@ -435,6 +438,7 @@ function showUserList() {
 // ================================================================================================= //
 
 function start() {
+  storage.active = true
   loop();
 }
 
@@ -470,7 +474,7 @@ function setClick() {
 }
 
 function addStyle() {
-  console.log(">> Add style");
+  console.info(">> Add style");
   const lestStyle = document.getElementById("style");
   if (lestStyle) {
     lestStyle.remove();
@@ -486,7 +490,11 @@ function addStyle() {
 //                                         Add history item                                          //
 // ================================================================================================= //
 
-function add(name, muted, time) {
+function displayResult(result) {
+  console.log(result)
+}
+
+function add(name, muted, time, state) {
   const wrapper = document.createElement("li");
   wrapper.classList.add("historyItem");
   wrapper.innerHTML = components.historyItem(time, name, muted);
@@ -613,7 +621,7 @@ function startButton() {
   button.onclick = stopButton;
   button.id = "stop";
 
-  storage.status = true;
+  storage.active = true;
   loop();
 }
 
@@ -623,7 +631,7 @@ function stopButton() {
   button.innerText = "Start";
   button.onclick = startButton;
   button.id = "start";
-  storage.status = false;
+  storage.active = false;
 }
 
 function alertButton() {
