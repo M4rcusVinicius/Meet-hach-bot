@@ -4,7 +4,8 @@
 
 var storage = {
   previous: [],
-  prevMuted: []
+  prevMuted: [],
+  muted: []
 };
 
 // ================================================================================================= //
@@ -22,6 +23,8 @@ function bot() {
 
   storage.previous = userName;
   storage.prevMuted = mutedUser;
+
+  console.log(result);
 }
 
 function getUsers() {
@@ -46,10 +49,26 @@ function prosses(userName, mutedUser) {
   const unmuted = storage.prevMuted.filter(
     (user) => mutedUser.indexOf(user) === -1
   );
-  console.log("Arrive:", arrive);
-  console.log("Leave:", leave);
-  console.log("Muted:", muted);
-  console.log("Unmuted:", unmuted);
+  return {
+    arrive: compose(arrive),
+    leave: compose(leave),
+    muted: compose(muted),
+    unmuted: compose(unmuted)
+  };
+}
+
+function compose(arr) {
+  const date = new Date();
+  const hours = `0${date.getHours()}`.slice(-2);
+  const minutes = `0${date.getMinutes()}`.slice(-2);
+  const time = hours + ":" + minutes;
+  return arr.map((name) => {
+    return {
+      name: name,
+      time: time,
+      muted: storage.muted.indexOf(name) > -1
+    };
+  });
 }
 
 // ================================================================================================= //
