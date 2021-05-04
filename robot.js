@@ -12,9 +12,8 @@ var db = {
 // ================================================================================================= //
 
 function bot() {
-  showUserList();
   const users = getUsers();
-  process(users)
+  storage.lastCheck = process(users)
 }
 
 function getUsers() {
@@ -30,8 +29,10 @@ function process(users) {
   const result = new Object
   users.map(user => {
     const id = user.name.replace(/[^\w\s]/gi, '').replace(/\s/g, '-')
-    console.log('ID:', id)
+    result[id] = user
   })
+  console.log(result)
+  return result
 }
 
 console.clear()

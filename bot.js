@@ -375,6 +375,7 @@ function bot() {
   storage.prevMuted = mutedUser;
 
   console.log(result);
+  displayResult(result)
 }
 
 function getUsers() {
@@ -491,7 +492,8 @@ function addStyle() {
 // ================================================================================================= //
 
 function displayResult(result) {
-  console.log(result)
+  const items = [...result.arrive, ...result.leave, ...result.muted, ...result.unmuted]
+  console.log(items)
 }
 
 function add(name, muted, time, state) {
