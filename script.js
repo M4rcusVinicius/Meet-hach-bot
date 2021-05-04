@@ -4,7 +4,7 @@
 
 var db = {
   history: [],
-  prev: new Object(),
+  prev: new Object()
 };
 
 // ================================================================================================= //
@@ -16,27 +16,29 @@ function bot() {
   const [result, change] = process(users);
   // console.log("Users to display:", change);
   // console.log("Result:", result);
-  display(change)
+  display(change);
   db.prev = result;
 }
 
-
 function getUsers() {
   const userList = document.getElementsByClassName("KV1GEc");
-  const names = new Array
+  const names = new Array();
   if (userList.length === 0) {
     error("Can't find any user");
   }
   return Object.values(userList).map((user) => {
     let name = user.querySelector(".ZjFb7c").innerText;
-    if(names.indexOf(name) !== -1) {
-      name = name + ' (copy)'
-      error('There are 2 users with the same name, the name has been changed to ' + name)
-      user.querySelector('.ZjFb7c').innerText = name
-      console.log(user.querySelector('.ZjFb7c'))
+    if (names.indexOf(name) !== -1) {
+      name = name + " (copy)";
+      error(
+        "There are 2 users with the same name, the name has been changed to " +
+          name
+      );
+      user.querySelector(".ZjFb7c").innerText = name;
+      console.log(user.querySelector(".ZjFb7c"));
     }
     const muted = !!user.querySelector(".FTMc0c");
-    names.push(name)
+    names.push(name);
     return { name: name, muted: muted, att: [] };
   });
 }
@@ -97,10 +99,10 @@ function display(change) {
     unmuted: "unmuted",
     muted: "muted",
     leave: "leave",
-    new: "new",
+    new: "new"
   };
   change.forEach((user) => {
-    console.log(user.name, ':', user.att);
+    console.log(user.name, ":", user.att);
   });
 }
 
