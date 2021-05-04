@@ -9,19 +9,35 @@ body {
 	left: 1rem;
 	padding: 1rem;
 	border-radius: 5px;
-	background-color: #eff0f4;
-  width: 22rem;
+	background-color: #f3f3f3;
+  width: 25rem;
 }
 
 .header {
-  display: flex;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .title {
 	margin: 0;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 }
 
 .nav {
   display: flex;
+}
+
+.button {
+	padding: .5rem 1rem;
+	background-color: #7064ff;
+	border-radius: 5px;
+	margin-right: .2rem;
+	cursor: pointer;
+  color: #f3f3f3;
+  transition: 200ms;
+}
+
+.button:hover {
+  background-color: #483ae8;
 }
