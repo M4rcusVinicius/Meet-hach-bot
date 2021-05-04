@@ -41,3 +41,40 @@ body {
 .button:hover {
   background-color: #483ae8;
 }
+
+/* ================================================================================================= */
+/*                                              Config                                               */
+/* ================================================================================================= */
+
+.config {
+	margin: 1rem 0;
+}
+
+.configElement {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: .5rem;
+}
+
+.configText {
+	width: 15rem;
+}
+
+.configTitle {
+	font-size: 1.1rem;
+}
+
+.configDescription {
+	font-size: .8rem;
+}
+
+.configInputNumber {
+	appearance: textfield;
+	padding: 0.4rem .8rem;
+	width: 5rem;
+	border-radius: 5px;
+	border: 1px solid #747474;
+	font-size: 1rem;
+	color: #444;
+}

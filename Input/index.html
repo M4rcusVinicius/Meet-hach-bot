@@ -12,14 +12,27 @@
       <div class="header">
         <h2 class="title">Meet Robot</h2>
         <div class="nav">
-          <div class="button" id="config">
-            Config
-          </div>
-          <div class="button" id="config">
-            Dash
-          </div>
-          <div class="button" id="hide">
-            Hide
+          <div class="button" id="config">Config</div>
+          <div class="button" id="config">Dash</div>
+          <div class="button" id="hide">Hide</div>
+        </div>
+      </div>
+      <div id="main">
+        <div class="config">
+          <div class="configElement">
+            <div class="configText">
+              <div class="configTitle">Check delay time</div>
+              <div class="configDescription">
+                Corresponds to the check delay time. Time in milliseconds.
+              </div>
+            </div>
+            <input
+              type="number"
+              step="1000"
+              name="checkDelay"
+              id="checkDelay"
+              class="configInputNumber"
+            />
           </div>
         </div>
       </div>
