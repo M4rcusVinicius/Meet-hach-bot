@@ -13,8 +13,9 @@
 
   function bot() {
     const users = getUsers();
-    const result = process(users)
-    console.log(result)
+    const [ result, display ] = process(users)
+    console.log('Users to display:', display)
+    console.log('Result:', result)
     db.prev = result
   }
 
@@ -30,6 +31,7 @@
 
   function process(users) {
     const result = new Object
+    const display = new Array
 
     users.map(user => {
       const id = user.name.replace(/[^\w\s]/gi, '').replace(/\s/g, '-')
@@ -43,16 +45,18 @@
       };
       delete db.prev[id]
       console.log(user.name, ':', ...user.att)
+      if(user.att.length > 0) { display.push(user) }
       result[id] = user
     })
 
     for (const [key, user] of Object.entries(db.prev)) {
       user.att.push('leave')
       console.log(user.name, ':', ...user.att)
+      display.push(user)
       result[key] = user
     }
-    
-    return result
+
+    return [ result, display ]
   }
 
   // ================================================================================================= //
