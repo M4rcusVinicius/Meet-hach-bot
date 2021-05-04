@@ -20,6 +20,7 @@ function bot() {
   db.prev = result;
 }
 
+
 function getUsers() {
   const userList = document.getElementsByClassName("KV1GEc");
   const names = new Array
