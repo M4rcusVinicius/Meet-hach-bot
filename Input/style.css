@@ -52,6 +52,17 @@ body {
   background-color: #483ae8;
 }
 
+.icon {
+	width: 1.7rem;
+	height: 1.2rem;
+	margin-top: .2rem;
+}
+
+.headerButton {
+ margin: 0;
+ border-radius: 0;
+}
+
 /* ================================================================================================= */
 /*                                              Config                                               */
 /* ================================================================================================= */
@@ -97,17 +108,51 @@ body {
 /*                                              History                                              */
 /* ================================================================================================= */
 
+.history {
+	margin: 1.5rem 0;
+}
+
 .historyElement {
-	width: 23.3rem;
+	width: 24rem;
 	height: 2.2rem;
-	background-color: #d7d7d7;
-	margin: 0.5rem 0;
+	margin: .5rem 0;
 	border-radius: 5px;
 	display: flex;
 	align-items: center;
-	padding: 0 .8rem;
+	padding-right: .8rem;
 	justify-content: space-between;
 	font-size: .9rem;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.historyElement:hover {
+  background-color: #d3d8ff;
+}
+
+.name {
+	width: 17rem;
+}
+
+.att {
+	display: flex;
+	justify-content: space-between;
+	width: .5rem;
+	margin-left: .2rem;
+}
+
+.attItem {
+	width: .2rem;
+	height: 2rem;
+	border-radius: 5px;
+}
+
+.time {
+	color: #a2a2a2;
+}
+
+.time {
+	color: #a2a2a2;
 }
 
 .microphone {
