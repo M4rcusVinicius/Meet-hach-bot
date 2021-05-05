@@ -29,16 +29,26 @@ body {
 }
 
 .button {
-	padding: .5rem 1rem;
-	background-color: #7064ff;
+	padding: .45rem .9rem;
 	border-radius: 5px;
 	margin-right: .2rem;
 	cursor: pointer;
-  color: #f3f3f3;
-  transition: 200ms;
+	color: #131313;
+	transition: 200ms;
+	background-color: #d3d8ff;
+	border: 1px solid #d3d8ff;
 }
 
 .button:hover {
+  background-color: #c4beff;
+}
+
+.buttonCheck {
+  background-color: #7064ff;
+  color: #f3f3f3;
+}
+
+.buttonCheck:hover {
   background-color: #483ae8;
 }
 
@@ -77,4 +87,8 @@ body {
 	border: 1px solid #747474;
 	font-size: 1rem;
 	color: #444;
+}
+
+.control {
+	display: flex;
 }
